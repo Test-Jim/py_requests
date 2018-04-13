@@ -2,10 +2,10 @@
 # -*- coding: UTF-8 -*-
 import os,re,time,logging
 from bs4 import BeautifulSoup
-from testcase import testMain
+import testMain,testMainUshare
 def rewrite():
     #这个时间很重要，必须大于所有接口运行累加的时间
-    time.sleep(1)
+
 
     result_dir=os.path.abspath('')+"\html\\"
     l=os.listdir(result_dir)
@@ -13,7 +13,8 @@ def rewrite():
     with open(result_dir+l[-1],'r+') \
         as fd:
             soup=BeautifulSoup(fd,'lxml')
-            passls,fels=testMain.apiMain.passls,testMain.apiMain.fels
+            # passls,fels=testMain.apiMain.passls,testMain.apiMain.fels
+            passls,fels=testMainUshare.apiMain.passls,testMainUshare.apiMain.fels
             listpass=soup.find_all('td',colspan='5',text=True)
             listfe=soup.find_all('a',class_="popup_link")
 

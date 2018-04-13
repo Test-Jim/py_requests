@@ -14,9 +14,12 @@ def logfile(filename):
             datefmt='%a, %d %b %Y %H:%M:%S',
             filename=logfilename,
             )
-def printlog(str_apiName,str_req,str_res,str_ms=None):
-    logging.info(str_apiName+' request:'+str_req)
-    str_res=str_res.decode('unicode-escape')
+def printlog(str_apiName,str_req,str_res,str_ms=None,body=None):
+    logging.info(str_apiName+' requestUrl:'+str_req)
+    logging.info('body:'+str(body))
+    # str_res=str_res.decode('unicode-escape')
+    str_res=str_res.decode('UTF-8')
+
     logging.info(str_apiName+' APItime:'+str_ms+' response:'+str_res)
     logging.info('-----------------------------------------------------')
 
